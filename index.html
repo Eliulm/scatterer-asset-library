@@ -125,7 +125,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font
         <dl class="facts" id="facts"></dl>
         <h3 id="partsHead">Parts</h3>
         <ul class="parts" id="parts"></ul>
-        <p class="note">Preview meshes are simplified for the web and shaded flat; part boundaries, materials and dimensions match the exported asset. Material names are categories, not measured EM constants.</p>
+        <p class="note">Preview meshes keep full detail up to 150,000 triangles per asset, smoothed below a 35° crease angle; part boundaries, materials and dimensions match the exported asset. Material names are categories, not measured EM constants.</p>
       </section>
     </div>
   </main>
@@ -245,7 +245,8 @@ function load(a){
     group.traverse(o=>{if(!o.isMesh)return;
       const src=o.material, ex=o.userData||{};
       o.material=new THREE.MeshStandardMaterial({color:src.color?src.color.clone():new THREE.Color(0x999999),
-        metalness:Math.min(src.metalness??0,0.6),roughness:Math.max(src.roughness??0.6,0.35),flatShading:true,side:THREE.DoubleSide});
+        metalness:Math.min(src.metalness??0,0.6),roughness:Math.max(src.roughness??0.6,0.35),side:THREE.DoubleSide});
+      if(!o.geometry.attributes.normal)o.geometry.computeVertexNormals();
       o.userData={role:ex.role,material:ex.material_label,layer:ex.em_layer||'exterior',confidence:ex.confidence,
         assembly:ex.assembly,baseColor:o.material.color.getHex()}});
     scene.add(group);

@@ -10,7 +10,8 @@ by exterior/internal layer, and click parts to read their material labels.
 
 - `assets.json` — index of assets: generic name, category, bounding box (mm),
   triangle counts, and parts with material label, layer and confidence.
-- `models/*.glb` — simplified preview meshes (up to ~40k triangles, no normals);
+- `models/*.glb` — preview meshes with normals (full detail up to 150k triangles per asset,
+  smooth shading below a 35° crease angle);
   node extras carry `role`, `material_label`, `em_layer`, `confidence`, `assembly`.
 
 Material labels are categories, not measured electromagnetic constants. The
