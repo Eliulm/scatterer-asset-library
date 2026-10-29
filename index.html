@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scatterer Asset Library</title>
+<meta name="description" content="Interactive 3D browser for generated EM scattering simulation assets (0.1-15 GHz).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: specimen drawer (searchable index) beside a lit inspection bench (3D viewport + part ledger). */
+:root{
+  --bg:#eef1f1; --panel:#f8faf9; --ink:#17201f; --muted:#5c6967; --line:#d3dad8;
+  --accent:#0f6b73; --accent-soft:#d6ecec; --bench:#e3e8e7; --bench-ink:#41504e; --warn:#a4561d;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111716; --panel:#161e1d; --ink:#e2eae8; --muted:#93a19f; --line:#2a3634;
+  --accent:#5cc3c9; --accent-soft:#183536; --bench:#1b2423; --bench-ink:#a9b8b5; --warn:#e3a06a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111716; --panel:#161e1d; --ink:#e2eae8; --muted:#93a19f; --line:#2a3634;
+  --accent:#5cc3c9; --accent-soft:#183536; --bench:#1b2423; --bench-ink:#a9b8b5; --warn:#e3a06a; color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{color-scheme:light}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.45}
+.app{display:grid;grid-template-columns:minmax(280px,340px) 1fr;height:100%;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:16px;gap:16px;box-sizing:border-box}
+/* Index drawer */
+.drawer{display:flex;flex-direction:column;min-height:0;min-width:0;gap:12px}
+.brand h1{font-family:var(--display);font-stretch:118%;font-weight:760;font-size:22px;letter-spacing:.01em;margin:0;text-wrap:balance}
+.brand p{margin:4px 0 0;color:var(--muted);font-size:12.5px}
+.search{width:100%;box-sizing:border-box;border:1px solid var(--line);background:var(--panel);color:var(--ink);
+  border-radius:6px;padding:9px 10px;font:inherit}
+.search:focus-visible,button:focus-visible,.item:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:4px 10px;
+  font:500 12px var(--body);cursor:pointer;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+.list{overflow:auto;min-height:0;flex:1;border-top:1px solid var(--line);margin:0;padding:0;list-style:none}
+.item{display:grid;grid-template-columns:44px 1fr auto;gap:8px;align-items:baseline;padding:9px 6px;
+  border-bottom:1px solid var(--line);cursor:pointer}
+.item:hover{background:var(--bench)}
+.item[aria-current="true"]{background:var(--accent-soft)}
+.item .id{font:500 11.5px var(--mono);color:var(--accent)}
+.item .nm{font-weight:500;min-width:0;overflow-wrap:anywhere}
+.item .meta{font:11px var(--mono);color:var(--muted);text-align:right;white-space:nowrap}
+.count{font:11.5px var(--mono);color:var(--muted)}
+/* Bench */
+.bench{display:grid;grid-template-rows:auto 1fr;min-height:0;min-width:0;gap:12px}
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 20px}
+.head h2{font-family:var(--display);font-stretch:108%;font-weight:700;font-size:26px;margin:0;line-height:1.1;text-wrap:balance}
+.head .sub{font:12px var(--mono);color:var(--muted);margin-top:4px}
+.tools{display:flex;flex-wrap:wrap;gap:6px}
+.tg{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:6px 10px;
+  font:500 12.5px var(--body);cursor:pointer}
+.tg[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.stage{display:grid;grid-template-columns:1fr minmax(240px,300px);gap:12px;min-height:0}
+.view{position:relative;background:var(--bench);border-radius:10px;overflow:hidden;min-height:320px}
+.view canvas{display:block;width:100%;height:100%}
+.hint{position:absolute;left:12px;bottom:10px;font:11px var(--mono);color:var(--bench-ink);pointer-events:none}
+.status{position:absolute;inset:0;display:grid;place-items:center;font:12px var(--mono);color:var(--bench-ink);pointer-events:none}
+.ledger{display:flex;flex-direction:column;gap:12px;min-height:0;min-width:0;overflow:auto}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0;font-size:12.5px}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.ledger h3{font:600 11px var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:4px 0 0}
+.parts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.part{display:grid;grid-template-columns:12px 1fr;gap:4px 8px;padding:7px 2px;border-bottom:1px solid var(--line);cursor:pointer}
+.part:hover{background:var(--bench)}
+.part[aria-current="true"]{background:var(--accent-soft)}
+.sw{width:12px;height:12px;border-radius:3px;margin-top:3px;border:1px solid var(--line)}
+.part .r{font-weight:500;min-width:0;overflow-wrap:anywhere}
+.part .m{grid-column:2;font:11px var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.tag{font:10.5px var(--mono);padding:0 5px;border-radius:3px;border:1px solid var(--line);margin-left:4px;color:var(--muted)}
+.tag.int{color:var(--warn);border-color:var(--warn)}
+.note{font-size:11.5px;color:var(--muted);margin:0}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr;height:auto}
+  .bench{order:-1}
+  .stage{grid-template-columns:1fr}
+  .view{height:56vh}
+  .list{max-height:60vh}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="drawer">
+    <div class="brand">
+      <h1>Scatterer Asset Library</h1>
+      <p>Generated objects for EM scattering simulation, 0.1–15 GHz. Each asset is a closed, material-labelled part assembly inside a 300 mm sphere.</p>
+    </div>
+    <input class="search" id="q" type="search" placeholder="Search objects, parts, materials" aria-label="Search assets">
+    <div class="chips" id="chips" role="group" aria-label="Category"></div>
+    <div class="count" id="count"></div>
+    <ul class="list" id="list"></ul>
+  </aside>
+
+  <main class="bench">
+    <div class="head">
+      <div>
+        <h2 id="title">Loading library</h2>
+        <div class="sub" id="sub"></div>
+      </div>
+      <div class="tools" role="group" aria-label="View options">
+        <button class="tg" id="xray" aria-pressed="false">X-ray exterior</button>
+        <button class="tg" id="bylayer" aria-pressed="false">Color by layer</button>
+        <button class="tg" id="sphere" aria-pressed="true">300 mm sphere</button>
+        <button class="tg" id="spin" aria-pressed="false">Auto-rotate</button>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="view" id="view">
+        <div class="status" id="status">Loading</div>
+        <div class="hint">Drag to orbit · scroll to zoom · click a part</div>
+      </div>
+      <section class="ledger" aria-label="Asset details">
+        <dl class="facts" id="facts"></dl>
+        <h3 id="partsHead">Parts</h3>
+        <ul class="parts" id="parts"></ul>
+        <p class="note">Preview meshes are simplified for the web and shaded flat; part boundaries, materials and dimensions match the exported asset. Material names are categories, not measured EM constants.</p>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const CATS=[['all','All'],['tools','Tools'],['kitchen','Kitchen'],['shapes','Simple shapes']];
+const LAYER_COLORS={exterior:0x8fa3a6,internal:0xd2742c};
+let assets=[],filtered=[],cat='all',current=null,group=null,selected=null;
+const opts={xray:false,bylayer:false,sphere:true,spin:false};
+
+function css(name){return getComputedStyle(document.documentElement).getPropertyValue(name).trim()}
+const view=$('view');
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+renderer.outputEncoding=THREE.sRGBEncoding;
+view.prepend(renderer.domElement);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(35,1,0.001,20);
+const controls=new THREE.OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true; controls.dampingFactor=0.08;
+scene.add(new THREE.HemisphereLight(0xffffff,0x7f8a8a,0.9));
+const key=new THREE.DirectionalLight(0xffffff,0.9); key.position.set(1,1.4,1.2); scene.add(key);
+const rim=new THREE.DirectionalLight(0xffffff,0.35); rim.position.set(-1.2,0.4,-1); scene.add(rim);
+const sphere=new THREE.Mesh(new THREE.SphereGeometry(0.15,36,18),
+  new THREE.MeshBasicMaterial({wireframe:true,transparent:true,opacity:0.14,color:0x0f6b73}));
+scene.add(sphere);
+const loader=new THREE.GLTFLoader();
+const cache=new Map();
+
+function resize(){const r=view.getBoundingClientRect();renderer.setSize(r.width,r.height,false);
+  camera.aspect=r.width/Math.max(r.height,1);camera.updateProjectionMatrix()}
+new ResizeObserver(resize).observe(view);
+
+function themeSync(){sphere.material.color.set(css('--accent')||'#0f6b73')}
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',themeSync);
+new MutationObserver(themeSync).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+function fmt(n){return n.toLocaleString('en-US')}
+function dims(a){return a.bounds_mm.map(v=>Math.round(v)).join(' × ')+' mm'}
+
+function renderChips(){
+  const counts={all:assets.length};assets.forEach(a=>counts[a.category]=(counts[a.category]||0)+1);
+  $('chips').innerHTML='';
+  CATS.forEach(([k,label])=>{const b=document.createElement('button');b.className='chip';
+    b.textContent=label+' '+(counts[k]||0);b.setAttribute('aria-pressed',String(k===cat));
+    b.onclick=()=>{cat=k;renderChips();renderList()};$('chips').append(b)});
+}
+function renderList(){
+  const q=$('q').value.trim().toLowerCase();
+  filtered=assets.filter(a=>(cat==='all'||a.category===cat)&&(!q||a._text.includes(q)));
+  $('count').textContent=filtered.length+' of '+assets.length+' assets';
+  const ul=$('list');ul.innerHTML='';
+  filtered.forEach(a=>{const li=document.createElement('li');li.className='item';li.tabIndex=0;li.dataset.id=a.id;
+    li.setAttribute('aria-current',String(current&&current.id===a.id));
+    li.innerHTML='<span class="id"></span><span class="nm"></span><span class="meta"></span>';
+    li.children[0].textContent=a.id;li.children[1].textContent=a.name;
+    li.children[2].textContent=a.parts.length+' pt';
+    li.onclick=()=>select(a);li.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(a)}};
+    ul.append(li)});
+}
+
+function partColor(mesh){return opts.bylayer?LAYER_COLORS[mesh.userData.layer]||0x999999:mesh.userData.baseColor}
+function styleMeshes(){
+  if(!group)return;
+  group.traverse(o=>{if(!o.isMesh)return;const m=o.material;
+    m.color.setHex(partColor(o));
+    const ext=o.userData.layer!=='internal';
+    m.transparent=opts.xray&&ext;m.opacity=opts.xray&&ext?0.16:1;m.depthWrite=!(opts.xray&&ext);
+    m.emissive.setHex(o===selected?0x1f5f63:0x000000);m.needsUpdate=true});
+}
+
+function select(a,fromHash){
+  current=a;selected=null;
+  document.querySelectorAll('.item').forEach(li=>li.setAttribute('aria-current',String(li.dataset.id===a.id)));
+  if(!fromHash){try{history.replaceState(null,'','#'+a.id)}catch(e){}}
+  $('title').textContent=a.name;
+  $('sub').textContent=a.id+' · '+({tools:'Tools',kitchen:'Kitchen',shapes:'Simple shapes'}[a.category])+(a.subcategory?' · '+a.subcategory:'');
+  const L=Math.max(...a.bounds_mm), ints=a.parts.filter(p=>p.layer==='internal').length;
+  const mats=new Set(a.parts.map(p=>p.material.toLowerCase())).size;
+  $('facts').innerHTML='';
+  [['Bounding box',dims(a)],['Largest dimension',Math.round(L)+' mm'],
+   ['Electrical size at 15 GHz',(L/20).toFixed(1)+' λ'],['Electrical size at 0.1 GHz',(L/3000).toFixed(3)+' λ'],
+   ['Parts',a.parts.length+(ints?' ('+ints+' internal)':'')],['Material labels',mats],
+   ['Triangles',fmt(a.tris)+(a.preview_tris<a.tris?' (preview '+fmt(a.preview_tris)+')':'')]]
+   .forEach(([k,v])=>{const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=v;$('facts').append(dt,dd)});
+  $('partsHead').textContent='Parts · '+a.parts.length;
+  $('parts').innerHTML='';
+  load(a);
+}
+
+function renderParts(){
+  const ul=$('parts');ul.innerHTML='';if(!group)return;
+  group.traverse(o=>{if(!o.isMesh)return;const p=o.userData;
+    const li=document.createElement('li');li.className='part';li.setAttribute('aria-current',String(o===selected));
+    li.innerHTML='<span class="sw"></span><span class="r"></span><span class="m"></span>';
+    li.children[0].style.background='#'+new THREE.Color(partColor(o)).getHexString();
+    li.children[1].textContent=p.role||o.name;
+    if(p.layer==='internal'){const t=document.createElement('span');t.className='tag int';t.textContent='internal';li.children[1].append(t)}
+    if(p.confidence==='inferred'){const t=document.createElement('span');t.className='tag';t.textContent='inferred';li.children[1].append(t)}
+    li.children[2].textContent=(p.material||'')+(p.assembly?' · '+p.assembly:'');
+    li.onclick=()=>{selected=selected===o?null:o;styleMeshes();renderParts()};
+    ul.append(li)});
+}
+
+function load(a){
+  $('status').textContent='Loading '+a.id;$('status').hidden=false;
+  const done=gltf=>{
+    if(current!==a)return;
+    if(group)scene.remove(group);
+    group=gltf.scene.clone(true);
+    group.traverse(o=>{if(!o.isMesh)return;
+      const src=o.material, ex=o.userData||{};
+      o.material=new THREE.MeshStandardMaterial({color:src.color?src.color.clone():new THREE.Color(0x999999),
+        metalness:Math.min(src.metalness??0,0.6),roughness:Math.max(src.roughness??0.6,0.35),flatShading:true,side:THREE.DoubleSide});
+      o.userData={role:ex.role,material:ex.material_label,layer:ex.em_layer||'exterior',confidence:ex.confidence,
+        assembly:ex.assembly,baseColor:o.material.color.getHex()}});
+    scene.add(group);
+    const box=new THREE.Box3().setFromObject(group),c=box.getCenter(new THREE.Vector3()),s=box.getSize(new THREE.Vector3());
+    sphere.position.copy(c);
+    const r=Math.max(s.length()/2,0.01);
+    controls.target.copy(c);
+    camera.position.copy(c).add(new THREE.Vector3(1,0.75,1.1).normalize().multiplyScalar(r*3.2));
+    camera.near=r/100;camera.far=r*60;camera.updateProjectionMatrix();controls.update();
+    styleMeshes();renderParts();$('status').hidden=true;
+  };
+  if(cache.has(a.file))return done(cache.get(a.file));
+  loader.load(a.file,g=>{cache.set(a.file,g);done(g)},undefined,
+    ()=>{if(current===a)$('status').textContent='Could not load '+a.id+'. Try another asset.'});
+}
+
+function toggle(id,key,after){const b=$(id);b.onclick=()=>{opts[key]=!opts[key];b.setAttribute('aria-pressed',String(opts[key]));after&&after()}}
+toggle('xray','xray',styleMeshes);
+toggle('bylayer','bylayer',()=>{styleMeshes();renderParts()});
+toggle('sphere','sphere',()=>sphere.visible=opts.sphere);
+toggle('spin','spin',()=>controls.autoRotate=opts.spin);
+controls.autoRotateSpeed=1.2;
+
+const ray=new THREE.Raycaster(),ptr=new THREE.Vector2();let down=null;
+renderer.domElement.addEventListener('pointerdown',e=>down=[e.clientX,e.clientY]);
+renderer.domElement.addEventListener('pointerup',e=>{
+  if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>4||!group)return;
+  const r=renderer.domElement.getBoundingClientRect();
+  ptr.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(ptr,camera);
+  const meshes=[];group.traverse(o=>{if(o.isMesh&&!(opts.xray&&o.userData.layer!=='internal'))meshes.push(o)});
+  const hit=ray.intersectObjects(meshes,false)[0];selected=hit?hit.object:null;styleMeshes();renderParts();
+});
+
+(function loop(){requestAnimationFrame(loop);controls.update();renderer.render(scene,camera)})();
+$('q').addEventListener('input',renderList);
+addEventListener('hashchange',()=>{const a=assets.find(x=>x.id===location.hash.slice(1).toUpperCase());if(a&&a!==current)select(a,true)});
+
+fetch('assets.json').then(r=>r.json()).then(data=>{
+  assets=data;assets.forEach(a=>a._text=[a.id,a.name,a.subcategory,...a.parts.map(p=>p.role+' '+p.material)].join(' ').toLowerCase());
+  renderChips();renderList();themeSync();resize();
+  const h=location.hash.slice(1).toUpperCase();
+  select(assets.find(a=>a.id===h)||assets.find(a=>a.id==='K017')||assets[0],!!h);
+}).catch(()=>{$('title').textContent='Library unavailable';$('status').textContent='The asset index could not be loaded.'});
+})();
+</script>
+</body>
+</html>
