@@ -1,0 +1,621 @@
+# Approximate GLB base colours; glTF PBR material properties are not fully represented in MTL.
+
+newmtl mat_000
+Kd 0.055 0.059999999 0.064999998
+d 1
+illum 2
+
+newmtl mat_001
+Kd 0.055 0.059999999 0.064999998
+d 1
+illum 2
+
+newmtl mat_002
+Kd 0.055 0.059999999 0.064999998
+d 1
+illum 2
+
+newmtl mat_003
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_004
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_005
+Kd 0.035 0.19 0.12
+d 1
+illum 2
+
+newmtl mat_006
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_007
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_008
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_009
+Kd 0.23 0.25 0.25999999
+d 1
+illum 2
+
+newmtl mat_010
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_011
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_012
+Kd 0.23 0.25 0.25999999
+d 1
+illum 2
+
+newmtl mat_013
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_014
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_015
+Kd 0.23 0.25 0.25999999
+d 1
+illum 2
+
+newmtl mat_016
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_017
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_018
+Kd 0.23 0.25 0.25999999
+d 1
+illum 2
+
+newmtl mat_019
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_020
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_021
+Kd 0.23 0.25 0.25999999
+d 1
+illum 2
+
+newmtl mat_022
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_023
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_024
+Kd 0.16 0.17 0.17
+d 1
+illum 2
+
+newmtl mat_025
+Kd 0.47999999 0.49000001 0.47
+d 1
+illum 2
+
+newmtl mat_026
+Kd 0.47999999 0.49000001 0.47
+d 1
+illum 2
+
+newmtl mat_027
+Kd 0.47999999 0.49000001 0.47
+d 1
+illum 2
+
+newmtl mat_028
+Kd 0.47999999 0.49000001 0.47
+d 1
+illum 2
+
+newmtl mat_029
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_030
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_031
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_032
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_033
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_034
+Kd 0.029999999 0.035 0.037999999
+d 1
+illum 2
+
+newmtl mat_035
+Kd 0.72000003 0.235 0.035
+d 1
+illum 2
+
+newmtl mat_036
+Kd 0.055 0.059999999 0.064999998
+d 1
+illum 2
+
+newmtl mat_037
+Kd 0.055 0.059999999 0.064999998
+d 1
+illum 2
+
+newmtl mat_038
+Kd 0.055 0.059999999 0.064999998
+d 1
+illum 2
+
+newmtl mat_039
+Kd 0.47 0.49000001 0.5
+d 1
+illum 2
+
+newmtl mat_040
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_041
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_042
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_043
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_044
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_045
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_046
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_047
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_048
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_049
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_050
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_051
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_052
+Kd 0.029999999 0.035 0.037999999
+d 1
+illum 2
+
+newmtl mat_053
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_054
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_055
+Kd 0.029999999 0.035 0.037999999
+d 1
+illum 2
+
+newmtl mat_056
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_057
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_058
+Kd 0.47 0.49000001 0.5
+d 1
+illum 2
+
+newmtl mat_059
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_060
+Kd 0.72000003 0.235 0.035
+d 1
+illum 2
+
+newmtl mat_061
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_062
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_063
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_064
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_065
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_066
+Kd 0.72000003 0.235 0.035
+d 1
+illum 2
+
+newmtl mat_067
+Kd 0.72000003 0.235 0.035
+d 1
+illum 2
+
+newmtl mat_068
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_069
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_070
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_071
+Kd 0.47 0.49000001 0.5
+d 1
+illum 2
+
+newmtl mat_072
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_073
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_074
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_075
+Kd 0.035 0.19 0.12
+d 1
+illum 2
+
+newmtl mat_076
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_077
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_078
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_079
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_080
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_081
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_082
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_083
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_084
+Kd 0.47 0.49000001 0.5
+d 1
+illum 2
+
+newmtl mat_085
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_086
+Kd 0.72000003 0.235 0.035
+d 1
+illum 2
+
+newmtl mat_087
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_088
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_089
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_090
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_091
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_092
+Kd 0.72000003 0.235 0.035
+d 1
+illum 2
+
+newmtl mat_093
+Kd 0.72000003 0.235 0.035
+d 1
+illum 2
+
+newmtl mat_094
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_095
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_096
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_097
+Kd 0.2 0.20999999 0.22
+d 1
+illum 2
+
+newmtl mat_098
+Kd 0.2 0.20999999 0.22
+d 1
+illum 2
+
+newmtl mat_099
+Kd 0.2 0.20999999 0.22
+d 1
+illum 2
+
+newmtl mat_100
+Kd 0.2 0.20999999 0.22
+d 1
+illum 2
+
+newmtl mat_101
+Kd 0.2 0.20999999 0.22
+d 1
+illum 2
+
+newmtl mat_102
+Kd 0.2 0.20999999 0.22
+d 1
+illum 2
+
+newmtl mat_103
+Kd 0.2 0.20999999 0.22
+d 1
+illum 2
+
+newmtl mat_104
+Kd 0.2 0.20999999 0.22
+d 1
+illum 2
+
+newmtl mat_105
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_106
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_107
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_108
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_109
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_110
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_111
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_112
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_113
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_114
+Kd 0.14 0.16 0.17
+d 1
+illum 2
+
+newmtl mat_115
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_116
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_117
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_118
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_119
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2
+
+newmtl mat_120
+Kd 0.58999997 0.27000001 0.094999999
+d 1
+illum 2
+
+newmtl mat_121
+Kd 0.47 0.49000001 0.5
+d 1
+illum 2
+
+newmtl mat_122
+Kd 0.36000001 0.38999999 0.41
+d 1
+illum 2
+
+newmtl mat_123
+Kd 0.075000003 0.082999997 0.088
+d 1
+illum 2

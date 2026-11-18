@@ -1,0 +1,141 @@
+# Approximate GLB base colours; glTF PBR material properties are not fully represented in MTL.
+
+newmtl mat_000
+Kd 0.19 0.22 0.23999999
+d 1
+illum 2
+
+newmtl mat_001
+Kd 0.86000001 0.255 0.035
+d 1
+illum 2
+
+newmtl mat_002
+Kd 0.25 0.28999999 0.31
+d 1
+illum 2
+
+newmtl mat_003
+Kd 0.57999998 0.63 0.64999998
+d 1
+illum 2
+
+newmtl mat_004
+Kd 0.57999998 0.63 0.64999998
+d 1
+illum 2
+
+newmtl mat_005
+Kd 0.57999998 0.63 0.64999998
+d 1
+illum 2
+
+newmtl mat_006
+Kd 0.75999999 0.205 0.025
+d 1
+illum 2
+
+newmtl mat_007
+Kd 0.57999998 0.63 0.64999998
+d 1
+illum 2
+
+newmtl mat_008
+Kd 0.19 0.22 0.23999999
+d 1
+illum 2
+
+newmtl mat_009
+Kd 0.19 0.22 0.23999999
+d 1
+illum 2
+
+newmtl mat_010
+Kd 0.19 0.22 0.23999999
+d 1
+illum 2
+
+newmtl mat_011
+Kd 0.19 0.22 0.23999999
+d 1
+illum 2
+
+newmtl mat_012
+Kd 0.57999998 0.63 0.64999998
+d 1
+illum 2
+
+newmtl mat_013
+Kd 0.57999998 0.63 0.64999998
+d 1
+illum 2
+
+newmtl mat_014
+Kd 0.19 0.22 0.23999999
+d 1
+illum 2
+
+newmtl mat_015
+Kd 0.19 0.22 0.23999999
+d 1
+illum 2
+
+newmtl mat_016
+Kd 0.25 0.28999999 0.31
+d 1
+illum 2
+
+newmtl mat_017
+Kd 0.57999998 0.63 0.64999998
+d 1
+illum 2
+
+newmtl mat_018
+Kd 0.19 0.22 0.23999999
+d 1
+illum 2
+
+newmtl mat_019
+Kd 0.017999999 0.025 0.027000001
+d 1
+illum 2
+
+newmtl mat_020
+Kd 0.57999998 0.63 0.64999998
+d 1
+illum 2
+
+newmtl mat_021
+Kd 0.25 0.28999999 0.31
+d 1
+illum 2
+
+newmtl mat_022
+Kd 0.75999999 0.205 0.025
+d 1
+illum 2
+
+newmtl mat_023
+Kd 0.19 0.22 0.23999999
+d 1
+illum 2
+
+newmtl mat_024
+Kd 0.25 0.28999999 0.31
+d 1
+illum 2
+
+newmtl mat_025
+Kd 0.86000001 0.255 0.035
+d 1
+illum 2
+
+newmtl mat_026
+Kd 0.19 0.22 0.23999999
+d 1
+illum 2
+
+newmtl mat_027
+Kd 0.017999999 0.025 0.027000001
+d 1
+illum 2

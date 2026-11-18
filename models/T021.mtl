@@ -1,0 +1,31 @@
+# Approximate GLB base colours; glTF PBR material properties are not fully represented in MTL.
+
+newmtl mat_000
+Kd 0.19 0.20999999 0.235
+d 1
+illum 2
+
+newmtl mat_001
+Kd 0.34 0.37 0.41
+d 1
+illum 2
+
+newmtl mat_002
+Kd 0.56999999 0.60000002 0.63999999
+d 1
+illum 2
+
+newmtl mat_003
+Kd 0.58999997 0.63 0.67000002
+d 1
+illum 2
+
+newmtl mat_004
+Kd 0.064999998 0.075000003 0.088
+d 1
+illum 2
+
+newmtl mat_005
+Kd 0.23 0.25999999 0.30000001
+d 1
+illum 2

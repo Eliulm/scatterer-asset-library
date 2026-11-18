@@ -16,3 +16,22 @@ by exterior/internal layer, and click parts to read their material labels.
 
 Material labels are categories, not measured electromagnetic constants. The
 objects are original designs inspired by real product types, not replicas.
+
+## Wavefront OBJ exports
+
+Every asset has a matching `models/<ID>.obj` and `models/<ID>.mtl` alongside
+its GLB. Each OBJ contains the assembly as separately named objects with
+normals and material assignments. Coordinates are in metres and use the same
+axes as the GLB. `obj-parts.json` maps the OBJ object names back to the GLB
+part roles, material labels, electromagnetic layers, and confidence notes.
+
+The OBJs are conversions of the published GLB previews, not the original
+builder OBJ files. They therefore have the same triangle counts as the GLBs;
+17 previews were simplified compared with the original asset triangle count.
+MTL colours approximate the GLB base colours, but the OBJ/MTL format cannot
+preserve all glTF PBR material and rendering properties. The GLBs remain the
+reference for appearance.
+
+To regenerate the OBJ, MTL and part index files, install Python dependencies
+`numpy` and `trimesh` (the current export was made with `trimesh==5.2.1`) and
+run `python scripts/export_glb_to_obj.py` from the repository root.
